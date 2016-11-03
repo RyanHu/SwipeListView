@@ -39,7 +39,7 @@ public class TestActivity extends Activity {
     }
 
     private void initAdapter() {
-        adapter = new SwipeListAdapter<String>(TestActivity.this, data, R.id.sll_main) {
+        adapter = new SwipeListAdapter<String>( data, R.id.sll_main) {
             @Override
             protected View getViewImpl(final int position, View convertView, ViewGroup parent) {
                 Holder holder;
