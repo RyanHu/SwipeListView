@@ -1,9 +1,7 @@
 package com.yuqirong.swipelistview.view;
 
-import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,18 +16,14 @@ import java.util.List;
 
 public abstract class SwipeListAdapter<T> extends BaseAdapter {
 
-    private Context context;
     private List<T> src;
     private List<SwipeListLayout> swipeListLayouts;
-    private LayoutInflater inflater;
     private
     @IdRes
     int swipeLayoutId;
 
-    public SwipeListAdapter(@NonNull Context _context, @NonNull List<T> _src, @IdRes int _swipeLayoutId) {
+    public SwipeListAdapter(@NonNull List<T> _src, @IdRes int _swipeLayoutId) {
         src = _src;
-        context = _context;
-        inflater = LayoutInflater.from(context);
         swipeLayoutId = _swipeLayoutId;
         swipeListLayouts = new ArrayList<>();
     }
