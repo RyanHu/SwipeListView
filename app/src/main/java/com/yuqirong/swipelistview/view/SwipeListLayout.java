@@ -247,8 +247,8 @@ public class SwipeListLayout extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        hiddenView = getChildAt(0); // 得到隐藏按钮的linearlayout
-        itemView = getChildAt(1); // 得到最上层的linearlayout
+        hiddenView = getChildAt(1); // 得到隐藏按钮的linearlayout
+        itemView = getChildAt(0); // 得到最上层的linearlayout
     }
 
     @Override
