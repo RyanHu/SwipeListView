@@ -139,21 +139,20 @@ public class MainActivity extends Activity {
             tv_name.setText(list.get(arg0));
             final SwipeListLayout sll_main = (SwipeListLayout) view
                     .findViewById(R.id.sll_main);
-            TextView tv_top = (TextView) view.findViewById(R.id.tv_top);
             TextView tv_delete = (TextView) view.findViewById(R.id.tv_delete);
             sll_main.setOnSwipeStatusListener(new MyOnSlipStatusListener(
                     sll_main));
-            tv_top.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
-                    sll_main.setStatus(SwipeListLayout.Status.Close, true);
-                    String str = list.get(arg0);
-                    list.remove(arg0);
-                    list.add(0, str);
-                    notifyDataSetChanged();
-                }
-            });
+//            tv_top.setOnClickListener(new OnClickListener() {
+//
+//                @Override
+//                public void onClick(View view) {
+//                    sll_main.setStatus(SwipeListLayout.Status.Close, true);
+//                    String str = list.get(arg0);
+//                    list.remove(arg0);
+//                    list.add(0, str);
+//                    notifyDataSetChanged();
+//                }
+//            });
             tv_delete.setOnClickListener(new OnClickListener() {
 
                 @Override
