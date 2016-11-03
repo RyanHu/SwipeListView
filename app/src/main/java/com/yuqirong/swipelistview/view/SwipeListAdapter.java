@@ -2,7 +2,6 @@ package com.yuqirong.swipelistview.view;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,17 +23,13 @@ public abstract class SwipeListAdapter<T> extends BaseAdapter {
     private List<SwipeListLayout> swipeListLayouts;
     private LayoutInflater inflater;
     private
-    @LayoutRes
-    int layoutId;
-    private
     @IdRes
     int swipeLayoutId;
 
-    public SwipeListAdapter(@NonNull Context _context, @NonNull List<T> _src, @IdRes int _layoutId, @IdRes int _swipeLayoutId) {
+    public SwipeListAdapter(@NonNull Context _context, @NonNull List<T> _src, @IdRes int _swipeLayoutId) {
         src = _src;
         context = _context;
         inflater = LayoutInflater.from(context);
-        layoutId = _layoutId;
         swipeLayoutId = _swipeLayoutId;
         swipeListLayouts = new ArrayList<>();
     }
@@ -65,6 +60,7 @@ public abstract class SwipeListAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        convertView = getViewImpl(position, convertView, parent);
         if (convertView != null) {
             final SwipeListLayout swipeListLayout = (SwipeListLayout) convertView.findViewById(swipeLayoutId);
             if (swipeListLayout != null)
@@ -86,9 +82,10 @@ public abstract class SwipeListAdapter<T> extends BaseAdapter {
                 });
         }
 
-
         return convertView;
     }
+
+    protected abstract View getViewImpl(int position, View convertView, ViewGroup parent);
 
 
     private void statusChanged(SwipeListLayout.Status status, SwipeListLayout swipeListLayout) {

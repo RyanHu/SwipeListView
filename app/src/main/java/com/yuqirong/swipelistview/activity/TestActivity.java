@@ -39,9 +39,9 @@ public class TestActivity extends Activity {
     }
 
     private void initAdapter() {
-        adapter = new SwipeListAdapter<String>(TestActivity.this, data, R.layout.slip_list_item, R.id.sll_main) {
+        adapter = new SwipeListAdapter<String>(TestActivity.this, data, R.id.sll_main) {
             @Override
-            public View getView(final int position, View convertView, ViewGroup parent) {
+            protected View getViewImpl(final int position, View convertView, ViewGroup parent) {
                 Holder holder;
                 if (convertView == null) {
                     holder = new Holder();
@@ -61,9 +61,8 @@ public class TestActivity extends Activity {
                         notifyDataSetChanged();
                     }
                 });
-
                 convertView.setTag(holder);
-                return super.getView(position, convertView, parent);
+                return convertView;
             }
 
             class Holder {
